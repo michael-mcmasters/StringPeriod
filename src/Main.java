@@ -6,6 +6,9 @@ public class Main {
         // ab
         System.out.println(stringPeriods("ababab"));
 
+        // haw
+        System.out.println(stringPeriods("hawhawhaw"));
+
         // -1
         System.out.println(stringPeriods("abaxbab"));
 
@@ -15,9 +18,14 @@ public class Main {
     }
 
     private static String stringPeriods(String sen) {
-        String subString = sen.substring(0, 2);
-        String result = checkForMatchingSubstrings(sen, subString);
-        return result;
+        for (int i = 1; i < sen.length() / 2; i++) {
+            String subString = sen.substring(0, i);
+            String result = checkForMatchingSubstrings(sen, subString);
+            if (result != "-1")
+                return result;
+        }
+
+        return "-1";
     }
 
     private static String checkForMatchingSubstrings(String sen, String subString) {
