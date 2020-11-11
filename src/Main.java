@@ -20,29 +20,26 @@ public class Main {
     private static String stringPeriods(String sen) {
         for (int i = 1; i < sen.length() / 2; i++) {
             String subString = sen.substring(0, i);
-            String result = checkForMatchingSubstrings(sen, subString);
-            if (result != "-1")
-                return result;
+            boolean foundPattern = checkForMatchingSubstrings(sen, subString);
+            if (foundPattern)
+                return subString;
         }
 
         return "-1";
     }
 
-    private static String checkForMatchingSubstrings(String sen, String subString) {
-        if (sen.length() % subString.length() == 0) {
-            boolean patternDetected = true;
-            for (int i = 0; i < sen.length(); i += subString.length()) {
-                if (sen.substring(i, i + subString.length()).equals(subString)) {
-                    continue;
-                }
-                patternDetected = false;
-                break;
-            }
+    private static boolean checkForMatchingSubstrings(String sen, String subString) {
+        if (sen.length() % subString.length() != 0)
+            return false;
 
-            if (patternDetected == true) {
-                return subString;
+        for (int i = 0; i < sen.length(); i += subString.length()) {
+            String subStringToCompare = sen.substring(i, i + subString.length());
+            if (!subString.equals(subStringToCompare)) {
+                return false;
             }
         }
-        return "-1";
+
+        // If subString passed conditions above, it is a pattern.
+        return true;
     }
 }
