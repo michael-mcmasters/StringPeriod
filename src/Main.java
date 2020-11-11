@@ -24,7 +24,7 @@ public class Main {
         if (sen.length() % subString.length() == 0) {
             boolean patternDetected = true;
             for (int i = 0; i < sen.length(); i += subString.length()) {
-                if (sen.substring(i, i + 2).equals(subString)) {
+                if (sen.substring(i, i + subString.length()).equals(subString)) {
                     continue;
                 }
                 patternDetected = false;
