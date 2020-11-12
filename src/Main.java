@@ -23,18 +23,18 @@ public class Main {
         // Run loop for half the length of sen, because a substring longer than that is not a pattern.
         for (int i = 1; i < sen.length() / 2; i++) {
             String subString = sen.substring(0, i);     // subString gets longer and longer every loop ("a", "ab", "abc", "abcd" etc...)
-            if (checkForMatchingSubstring(sen, subString))
+            if (checkForMatchingSubstrings(sen, subString))
                 return subString;
         }
 
         return "-1";
     }
 
-    private static boolean checkForMatchingSubstring(String sen, String subString) {
+    private static boolean checkForMatchingSubstrings(String sen, String subString) {
         // If sen is "ababab" and subString is "ab" ...
         // length of "ab" must go into length of "ababab" perfectly for it to be a pattern.
         // ( (6 letters) / (2 letters) equals 3 with a remainder of 0).
-        // If remainder is 0, it is perfectly divisible and we continue ("ab" goes into "ababab" 3 times)
+        // If remainder is 0, it is perfectly divisible and we continue ("ab" goes into "ababab" 3 times).
         // If not, it is not a pattern and we return false.
         if (sen.length() % subString.length() != 0)
             return false;
