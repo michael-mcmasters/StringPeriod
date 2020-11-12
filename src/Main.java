@@ -17,6 +17,9 @@ public class Main {
 
         // Answer: abcab
         System.out.println(stringPeriods("abcababcababcab"));
+
+        // Answer: -1
+        System.out.println(stringPeriods("affedaaffed"));
     }
 
     private static String stringPeriods(String sen) {
